@@ -1,0 +1,1203 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700;900&family=Sora:wght@400;700&display=swap");
+
+:root {
+  --primary: #0d6efd;
+  --dark: #21252f;
+  --body: #888;
+  --box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  font-family: 'Bodoni Moda', serif;
+  line-height: 1.7;
+  color: var(--body);
+  margin: 0; /* デフォルトのマージンをリセット */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 最小の高さを100vhに設定 */
+  
+  background-image: url('./img/背景.jpg'); /* 画像のパスを指定 */
+  background-size: cover; /* 画像を全体にフィットさせる */
+  background-position: center; /* 画像を中央に配置 */
+  background-repeat: no-repeat; /* 画像を繰り返さない */
+  background-attachment: fixed; /* 背景を固定してスクロール時に動かないように */
+}
+
+.main-content {
+  flex: 1; /* フッター以外の部分が余分なスペースを埋める */
+  background-color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-4 {
+  color: var(--dark);
+  font-weight: 700;
+}
+
+a {
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.text-black {
+  color: black !important; /* 重要度を上げて強制的に黒に */
+}
+
+.navbar .text-end {
+  text-align: right; /* 右揃えにする */
+  width: 100%; /* 幅を100%に */
+}
+
+img {
+  width: 100%;
+}
+
+.navbar {
+  box-shadow: var(--box-shadow);
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  width: 160px;
+}
+
+.navbar .nav-link {
+  font-size: 14px;
+  font-weight: 700;
+  color: black !important;
+}
+
+.btn {
+  padding: 14px 18px;
+  border-width: 2px;
+  border-radius: 0;
+}
+
+.hero {
+  margin: 0;
+  padding: 0;
+  background-position: center;
+  background-size: cover;
+  background-attachment: scroll; /* fixedからscrollに変更 */
+  position: relative;
+  z-index: 1;
+  margin-left: 30px;
+  margin-right: 30px;
+  z-index: 2; /* 画像より上に動画を置く */
+}
+
+.hero::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+
+
+/* 画像スライダーのコンテナ */
+.hero-slider-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: white;
+  margin: 0 auto;
+}
+
+
+
+/* スライド全体の設定 */
+.hero-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.hero-slide {
+  flex: 0 0 100%;
+  height: 100%;
+  display: flex;  /* 修正：blockからflexに変更 */
+  justify-content: center;  /* 画像を中央に表示 */
+  align-items: center;  /* 画像を中央に表示 */
+  position: relative;
+  z-index: 0;
+  opacity: 0;  /* 初期状態で非表示 */
+  transition: opacity 1s ease-in-out; /* フェードイン・フェードアウトのアニメーション */
+}
+
+/* 画像の設定 */
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 1s ease-in-out; /* 画像自体のフェードイン */
+}
+
+/* ドットのコンテナ */
+.hero-dots-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+}
+
+/* ドット */
+.hero-dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: gray;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+/* アクティブなドット */
+.hero-dot.active {
+  background-color: white;
+}
+
+/* Prev / Next ボタン */
+.hero-prev, .hero-next {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.hero-prev {
+  left: 10px;
+}
+
+.hero-next {
+  right: 10px;
+}
+
+.hero-prev:hover, .hero-next:hover {
+  opacity: 0.7;
+}
+
+/* アクティブなスライド */
+.hero-slide.active {
+  opacity: 1;  /* アクティブなスライドは表示 */
+  z-index: 1;  /* 前面に表示 */
+  display: block; 
+  z-index: 1;
+}
+
+
+.about-section {
+  padding: 60px 0; /* 上下の余白を追加 */
+  background-color: #f8f9fa; /* 背景色を設定 */
+}
+
+.about-section h1 {
+  color: #333; /* 見出しの色を設定 */
+  margin-bottom: 20px; /* 見出しの下の余白を設定 */
+}
+
+.about-section p {
+  color: #555; /* 本文の色を設定 */
+  line-height: 1.6; /* 行間を調整 */
+}
+
+.image-section {
+  margin: 0; /* 上下の余白を消す */
+  padding: 0; /* 必要に応じてパディングも消す */
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+section {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: transparent; /* 背景色を透明にして、bodyの背景が適用されるように */
+}
+
+.card-effect {
+  box-shadow: var(--box-shadow);
+  background-color: #fff;
+  padding: 25px;
+  transition: all 0.35s ease;
+}
+
+.card-effect:hover {
+  box-shadow: none;
+  transform: translateY(5px);
+}
+
+.iconbox {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
+  color: white;
+  font-size: 32px;
+  border-radius: 100px;
+  flex: none;
+}
+
+.service {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  height: 250px; /* 各ボックスの高さを統一 */
+}
+
+.service h5 {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  color: black;
+  text-align: center; /* テキストを中央に */
+  opacity: 0; /* 初期状態で非表示 */
+  transition: opacity 0.35s ease; /* アニメーションを追加 */
+}
+
+.service:hover h5 {
+  opacity: 1; /* hover時に表示 */
+}
+
+.description {
+  opacity: 0; /* 初期状態で非表示 */
+  transition: opacity 0.35s ease; /* アニメーションを追加 */
+}
+
+.service:hover .description {
+  opacity: 1; /* hover時に表示 */
+}
+
+.appetizer,
+.main-dish,
+.dessert,
+.bread,
+.coffee {
+  height: 300px; /* 高さを設定 */
+  background-size: cover;
+  background-position: center;
+
+}
+
+
+/* 店内の様子 */
+/* 画像スライダーのコンテナ */
+.blog-slider-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* スライド全体の設定 */
+.blog-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.blog-slide {
+  flex: 0 0 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;  /* 画像を中央に表示 */
+  align-items: center;      /* 画像を中央に表示 */
+  position: relative;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out; /* フェードイン・フェードアウトのアニメーション */
+}
+
+/* 画像の設定 */
+.blog-slide img {
+  width: auto;  /* 元の幅を維持 */
+  height: auto; /* 元の高さを維持 */
+  max-width: 100%;  /* スライダー内で最大幅に収める */
+  max-height: 100%; /* スライダー内で最大高さに収める */
+  transition: opacity 1s ease-in-out;
+}
+
+/* ドットのコンテナ */
+.blog-dots-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+}
+
+/* ドット */
+.blog-dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+/* アクティブなドット */
+.blog-dot.active {
+  background-color: #717171;
+}
+
+/* Prev / Next ボタン */
+.blog-prev, .blog-next {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.blog-prev {
+  left: 10px;
+}
+
+.blog-next {
+  right: 10px;
+}
+
+.blog-prev:hover, .blog-next:hover {
+  opacity: 0.7;
+}
+
+/* アクティブなスライド */
+.blog-slide.active {
+  opacity: 1;
+  z-index: 1;
+  display: block;
+}
+
+
+
+/* ここまで店内の様子 */
+
+/* 問い合わせ */
+
+/* ご予約・お問い合わせセクション */
+#contact {
+  background-color: #fff; /* 白い背景 */
+  padding-top: 80px; /* 上の余白 */
+  padding-bottom: 80px; /* 下の余白 */
+}
+
+section {
+  background-color: #fff; /* 全体的に白い背景 */
+  padding: 80px 0;  /* 他のセクションと余白を統一 */
+  margin-left: 30px;
+  margin-right: 30px;
+  position: relative;
+}
+
+/* フォームのラベルや入力フィールドにスタイルが必要な場合 */
+.form-label {
+  color: black; /* ラベルの文字色 */
+}
+
+.form-control {
+  color: black; /* 入力欄の文字色 */
+}
+
+
+
+/* スマホ用のスタイル */
+@media (max-width: 767.98px) {
+  .row {
+    display: flex;
+    overflow-x: auto; /* スクロール可能にする */
+  }
+
+  .col-4 {
+    flex: 0 0 auto; /* 自動幅に設定 */
+    width: 33.33%; /* 3つのカラムを横に並べる */
+  }
+
+  .navbar-nav {
+    display: flex; /* フレックスボックスで横並び */
+    flex-wrap: nowrap; /* 折り返さない */
+    overflow-x: auto; /* スクロール可能にする */
+  }
+
+  .nav-item {
+    flex: 1; /* 各ナビアイテムが均等に並ぶようにする */
+    text-align: center; /* 中央揃え */
+  }
+
+  .nav-link {
+    font-size: 14px; /* フォントサイズを調整 */
+    padding: 10px; /* パディングを調整 */
+  }
+}
+
+.service {
+  position: relative;
+  overflow: hidden; /* 子要素がはみ出さないように */
+  text-align: center; /* 中央揃え */
+}
+
+.service::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.service:hover::after {
+  opacity: 1;
+  top: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+h5,
+.description {
+  color: transparent; /* デフォルトは透明 */
+  transition: color 0.3s; /* 色の変更にアニメーションを追加 */
+}
+
+.service:hover h5,
+.service:hover .description { /* descriptionも追加 */
+  color: white; /* hover時に白に変更 */
+}
+
+.service:hover .iconbox {
+  background-color: #fff;
+  color: var(--primary);
+}
+
+/* features section */
+.col-img {
+  background-image: url(/img/酒.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 500px;
+  padding-top: 60px; /* 上に余白を追加 */
+  display: flex; /* フレックスボックスを使用 */
+  flex-direction: column; /* 縦に並べる */
+  position: relative; /* 画像の上にh1を配置するために追加 */
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* 黒のオーバーレイ */
+}
+
+.col-img h1 {
+  position: absolute; /* 親要素に対して絶対位置 */
+  bottom: 20px; /* 下から20pxの位置 */
+  left: 20px; /* 左から20pxの位置 */
+  color: white; /* テキストの色を白に */
+  font-size: 36px; /* フォントサイズ */
+}
+
+.row {
+  display: flex; /* フレックスボックスを使用 */
+  flex-wrap: wrap; /* 折り返し可能に */
+}
+
+.col {
+  flex: 1 1 calc(33.333% - 20px); /* 各カラムの幅を指定 */
+  margin: 10px; /* マージンを追加 */
+
+}
+.footer-top {
+  margin: 0; /* 左右の余白をリセット */
+  padding: 50px 0; /* 上下のパディングはそのまま */
+  background-color: #C0C0C0; /* 背景色 */
+  color: black; /* 文字色 */
+  position: fixed; /* 固定位置 */
+  bottom: 0;
+  left: 0; /* 左端に固定 */
+  right: 0; /* 右端に固定 */
+  width: 100%; /* 幅を100%に */
+  z-index: 10;
+  /* margin-left, margin-right, padding-left, padding-rightは不要 */
+}
+
+.footer-top h5 {
+  margin: 0; /* マージンをリセット */
+  white-space: nowrap; /* 改行を防ぐ */
+  color: black; /* h5の文字色も黒に変更 */
+}
+
+.icon {
+  width: 24px; /* 元のアイコンのサイズ */
+  height: 24px;
+}
+.icon-small {
+  width: 20px; /* 電話とメールのアイコンサイズを少し小さく */
+  height: 20px;
+}
+
+.text-center span {
+  font-size: 1rem; /* 電話とメールのテキストサイズ */
+  color:black; /* テキストカラーを白に設定 */
+}
+
+.mt-3 {
+  margin-top: 1rem; /* 上のマージンを追加 */
+}
+
+.border-start {
+  border-left: 1px solid white; /* 左の仕切り線 */
+  overflow: hidden; /* 仕切り線を越えた部分は隠す */
+}
+
+.border-end {
+  border-right: 1px solid white; /* 右の仕切り線 */
+  overflow: hidden; /* 仕切り線を越えた部分は隠す */
+}
+
+/* 新しいCSS */
+.footer-top .row:last-child {
+  justify-content: center; /* 中央揃え */
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.-top .row:last-child .col-12 {
+  flex-direction: row; /* 横並び */
+  justify-content: center; /* 中央揃え */
+}
+
+.phone-link {
+  color: black; /* デフォルトの色 */
+  text-decoration: none; /* 下線を消す */
+}
+
+.phone-link:hover {
+  color: blue; /* ホバー時の色 */
+}
+
+/* サイトから予約リンクのスタイル */
+.reservation-link {
+  color: inherit; /* デフォルトの色を維持 */
+  text-decoration: none; /* 下線をなくす */
+}
+
+/* ホバー時に文字色が青くなる */
+.reservation-link:hover {
+  color: blue; /* 青色に変更 */
+  cursor: pointer; /* ホバー時にカーソルをポインターに */
+}
+
+/* 交通アクセスリンクのスタイル */
+.access-link-container {
+    display: flex; /* 横並びにする */
+    align-items: center; /* アイテムを中央揃え */
+    text-decoration: none; /* リンクの下線を消す */
+}
+
+/* 交通アクセスのアイコン画像のサイズを調整 */
+.access-icon {
+    width: 40px; /* 画像の幅を調整 */
+    height: auto; /* 高さは自動で調整 */
+    margin-right: 5px; /* 画像とテキストの間隔を小さくする */
+}
+
+/* 交通アクセスの文字サイズを調整 */
+.access-link {
+    font-size: 18px; /* 文字サイズを調整 */
+    color: inherit; /* デフォルトの色を継承 */
+    text-decoration: none; /* 下線を消す */
+}
+
+/* ホバー時の文字色を青に変更 */
+.access-link:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+/* インスタのリンク*/
+/* デフォルトのスタイル */
+.instagram-link h5 {
+  text-decoration: none; /* 下線を消す */
+  color: inherit; /* 親の色を引き継ぐ（デフォルトでは黒文字） */
+}
+
+/* ホバー時のスタイル */
+.instagram-link:hover h5 {
+  color: blue; /* ホバー時に文字色を青に変更 */
+}
+
+/* スマホサイズ用メディアクエリ */
+@media (max-width: 768px) {
+  /* アイコンのサイズを小さく */
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .icon-small {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* アイコンとテキストを改行 */
+  .footer-top .row:last-child .col-12 {
+    display: block; /* 縦並びにする */
+    text-align: center; /* 中央揃え */
+  }
+
+  /* 仕切り線の文字が越えないように隠す */
+  .border-start, .border-end {
+    overflow: hidden;
+    white-space: nowrap; /* 文字が改行しないようにする */
+  }
+
+  /* 交通アクセスリンクのアイコンと文字の間隔を縮小 */
+  .access-link-container {
+    flex-direction: column; /* 縦並びに変更 */
+    align-items: center;
+  }
+
+  .access-icon {
+    width: 30px; /* アイコンのサイズを縮小 */
+    height: auto;
+    margin-right: 0; /* アイコンと文字の間隔を無くす */
+    margin-bottom: 5px; /* アイコンとテキストの間隔を調整 */
+  }
+
+  .access-link {
+    font-size: 16px; /* フォントサイズを少し小さくする */
+  }
+}
+
+
+/* 🍳 */
+
+/* 画像スライダーのコンテナ */
+.image-slider-container {
+  background-color: white;
+  padding: 30px; /* スライダー周囲の余白 */
+  margin-left: 30px;
+  margin-right: 30px;
+  width: calc(100% - 60px); /* paddingを除いた幅に調整 */
+  height: 100%;  /* 画面の高さの60%を使用 */
+  overflow: hidden;
+  box-sizing: border-box; /* padding と margin を含めて幅を計算 */
+  position: relative; /* ドットや矢印を画像の上に重ねるために必要 */
+}
+
+/* スライド全体の設定 */
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* スライドアイテムの設定 */
+.slide {
+  flex: 0 0 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  
+  z-index: 0; /* スライドの画像はデフォルトで背面 */
+  opacity: 0; /* デフォルトでは透明にして、アクティブなスライドだけ表示 */
+  transition: opacity 1s ease-in-out; /* スライドがフェードイン・フェードアウトする */
+}
+/* 画像の設定 */
+.slide img {
+  width: 100%;  /* 画像の幅は元のサイズを保つ */
+  height: 100%; /* 高さも自動調整 */
+  max-width: 100%;  /* 親コンテナを超えないように */
+  max-height: 100%; /* 親コンテナを超えないように */
+  object-fit: contain; /* 画像の縦横比を保ちながら収める */
+}
+
+
+/* アクティブなスライドを表示 */
+.slide.active {
+  opacity: 1; /* アクティブなスライドは表示 */
+  z-index: 1; /* 前面に表示 */
+}
+
+/* 画像の背景設定 */
+.slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;  /* 画像をスライド全体に広げる */
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1000; /* 背景画像はスライドの後ろに配置 */
+}
+
+/* ドットのコンテナをスライダー画像の上に配置 */
+.dots-container {
+  position: absolute;
+  bottom: 20px; /* ドットをスライダー画像の下に配置（上下中央でもOK） */
+  left: 50%;
+  transform: translateX(-50%); /* ドットを中央に配置 */
+  text-align: center;
+  z-index: 10; /* ドットが画像の上に表示されるように最前面に配置 */
+}
+
+/* ドットのスタイル */
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: gray; /* ドットの背景色を白に設定 */
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+/* アクティブなドットの背景色 */
+.dot.active {
+  background-color: white; /* アクティブなドットは灰色に変更 */
+}
+
+/* 左右の矢印ボタン */
+.prev, .next {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100; /* 矢印ボタンは最前面に */
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+/* ランチ */
+/* ランチ */
+/* ランチ */
+/* ランチ */
+/* ランチ */
+/* ランチメニューセクション */
+#lunch-services {
+  position: relative;
+  background-color: white;
+  padding: 60px 0; /* 上下に60pxの余白 */
+  overflow: hidden;
+  min-height: 100vh; /* セクションの高さを最小100vh（画面全体の高さ）に設定 */
+}
+
+/* ランチメニューの動画の設定 */
+#lunch-services .video-wrapper {
+  position: absolute;  /* 絶対配置で全画面表示 */
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden; /* 画面外の部分を隠す */
+}
+
+/* ランチメニュー動画自体 */
+#lunch-services .video-wrapper video {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* 縦横比を保ちながら親要素にフィット */
+}
+
+/* ランチメニューの背景画像設定 */
+#lunch-services .background-image {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1;
+  width: 50%;
+  height: 60%;
+  background-color: rgba(255, 255, 255, 0.8); /* 白いもや（透明度を調整） */
+  backdrop-filter: blur(10px); /* 背景にぼかし効果 */
+  object-fit: cover;
+  
+  transform: translateX(100%);
+  animation: slideInBackgroundLunch 1.5s ease-out forwards;
+
+  /* 上部30vhを削除するためのclip-path */
+  clip-path: inset(30vh 0 0 0);
+}
+
+@keyframes slideInBackgroundLunch {
+  0% {
+    transform: translateX(100%); /* 初期位置（画面外右） */
+  }
+  100% {
+    transform: translateX(0); /* スライドインして元の位置 */
+  }
+}
+
+#lunch-services .background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ランチメニューの文字コンテンツ設定 */
+#lunch-services .container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+  color: black;
+  padding: 0;
+  text-align: right;
+  font-size: 2vw;
+  max-width: 50%;
+  transform: translateX(100%);  /* 初期状態: 画面外右 */
+  opacity: 0; /* 初期状態: 非表示 */
+  animation: slideInTextLunch 1.5s ease-out 0.5s forwards; /* ランチのテキストスライドイン */
+}
+
+@keyframes slideInTextLunch {
+  0% {
+    transform: translateX(100%); /* 初期位置（画面外右） */
+    opacity: 0;  /* 初期状態で非表示 */
+  }
+  100% {
+    transform: translateX(0); /* 元の位置にスライドイン */
+    opacity: 1; /* 最後に完全に表示 */
+  }
+}
+
+/* ランチメニューのヘッダータイトル */
+#lunch-services h1 {
+  opacity: 0;
+  animation: fadeInTitleLunch 2s ease-in-out forwards;
+  font-size: clamp(1.5rem, 4vw, 3rem); /* 動的に変化する文字サイズ */
+  
+}
+
+@keyframes fadeInTitleLunch {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ランチメニューのサブテキスト */
+#lunch-services p {
+  opacity: 0;
+  animation: fadeInTextLunch 2s ease-in-out forwards;
+  font-size: clamp(1rem, 2.5vw, 1.5rem); /* 動的に変化する文字サイズ */
+  max-height: 100%;  /* 背景画像からはみ出さないように */
+  overflow: hidden;  /* はみ出した部分は隠す */
+}
+
+@keyframes fadeInTextLunch {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ランチメニュー詳細の調整 */
+#lunch-services .row p {
+  font-size: 0.85rem;
+}
+
+.row .col-md-6 {
+  flex: 1 1 50%;
+}
+
+/* ディナーメニューセクション */
+#dinner-services {
+  position: relative;
+  background-color: white;
+  padding: 60px 0; /* 上下に60pxの余白 */
+  min-height: 100vh; /* セクションの高さを最小100vh（画面全体の高さ）に設定 */
+}
+
+/* ディナーメニューの動画の設定 */
+#dinner-services .video-wrapper {
+  position: absolute;  /* 絶対配置で全画面表示 */
+  top: 0;
+  left: 0;
+  width: 100%;         /* 横幅100% */
+  height: 100%;        /* 高さ100% */
+  z-index: 0;          /* 動画を最も下に配置 */
+}
+
+/* ディナーメニュー動画自体 */
+#dinner-services .video-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;         /* 横幅100% */
+  height: 100%;        /* 高さ100% */
+  object-fit: cover;   /* 縦横比を保ちながら親要素にフィット */
+}
+
+/* ディナーメニューの背景画像設定 */
+#dinner-services .background-image {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  width: calc(50% + 30px);  /* 30px右に増加 */
+  height: 60%;
+  background-color: rgba(255, 255, 255, 0.8); /* 白いもや（透明度を調整） */
+  backdrop-filter: blur(10px); /* 背景にぼかし効果 */
+  object-fit: cover;
+  border-radius: 0 !important;
+  transform: translateX(-100%);
+  animation: slideInBackgroundDinner 1.5s ease-out forwards;
+  overflow: hidden;
+  clip-path: inset(0 0 10vh 0);
+}
+
+@keyframes slideInBackgroundDinner {
+  0% {
+    transform: translateX(-100%); /* 初期位置（画面外左） */
+  }
+  100% {
+    transform: translateX(0); /* スライドインして元の位置 */
+  }
+}
+
+#dinner-services .background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ディナーメニューの文字コンテンツ設定 */
+#dinner-services .container {
+  position: absolute;
+  top: 20px;            /* 動画の左上に配置（上から20px） */
+  left: 20px;           /* 動画の左上に配置（左から20px） */
+  z-index: 1;
+  color: black;
+  padding: 0;
+  text-align: left;     /* 左寄せに変更 */
+  font-size: 2vw;
+  max-width: 50%;
+  transform: translateX(-100%);  /* 初期状態: 画面外左 */
+  opacity: 0; /* 初期状態: 非表示 */
+  animation: slideInTextDinner 1.5s ease-out 0.5s forwards; /* ディナーのテキストスライドイン */
+}
+
+@keyframes slideInTextDinner {
+  0% {
+    transform: translateX(-100%); /* 初期位置（画面外左） */
+    opacity: 0;  /* 初期状態で非表示 */
+  }
+  100% {
+    transform: translateX(0); /* 元の位置にスライドイン */
+    opacity: 1; /* 最後に完全に表示 */
+  }
+}
+
+/* ディナーメニューのヘッダータイトル */
+#dinner-services h1 {
+  opacity: 0;
+  animation: fadeInTitleDinner 2s ease-in-out forwards;
+  white-space: nowrap;  /* 改行を禁止 */
+  margin-top: 30px;
+}
+
+@keyframes fadeInTitleDinner {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ディナーメニューのサブテキスト */
+#dinner-services p {
+  opacity: 0;
+  animation: fadeInTextDinner 2s ease-in-out forwards;
+}
+
+@keyframes fadeInTextDinner {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ディナーメニュー詳細の調整 */
+#dinner-services .row p {
+  font-size: 0.85rem;
+}
+
+.row .col-md-6 {
+  flex: 1 1 50%;
+}
+
+
+/* スマホ */
+/* スマホ */
+/* スマホ */
+/* スマホ */
+/* スマホ用設定 */
+@media screen and (max-width: 768px) {
+  /* ランチメニューの背景画像設定 */
+  #lunch-services .background-image {
+    position: absolute;
+    bottom: 0; /* 下端を合わせる */
+    left: 0; /* 左端を合わせる */
+    z-index: 1;
+    width: 100%;  /* 横幅100% */
+    height: auto; /* 高さは自動調整 */
+    background-color: rgba(255, 255, 255, 0.8); /* 白いもや（透明度） */
+    backdrop-filter: blur(10px); /* 背景にぼかし効果 */
+    object-fit: cover; /* 背景画像が親要素にフィット */
+    clip-path: inset(0 0 0 0); /* 画像の端をカットせずそのまま表示 */
+    transform: scale(1.3); /* 拡大率を適切に調整 */
+    transform-origin: center center; /* 拡大の中心を中央に */
+    overflow: hidden; /* はみ出した部分を非表示にする */
+    animation: none; /* アニメーションはなし */
+  }
+
+  /* ランチメニューの文字コンテンツ設定 */
+  #lunch-services .container {
+    position: relative; /* 絶対位置を相対位置に変更 */
+    bottom: auto; /* 写真の下に配置 */
+    right: auto; /* 右端の位置調整を解除 */
+    left: 0;
+    z-index: 2;
+    color: black;
+    padding: 20px;
+    text-align: left;  /* 左寄せ */
+    font-size: 1.2rem; /* 少し大きめの文字サイズ */
+    max-width: 100%; /* 横幅を100%に */
+    transform: none;  /* スライドインなし */
+    opacity: 1; /* 最初から表示 */
+  }
+
+  /* ランチメニューのヘッダータイトル */
+  #lunch-services h1 {
+    opacity: 1; /* 初めから表示 */
+    font-size: 1.8rem; /* フォントサイズを固定 */
+    margin-top: 20px; /* 上の余白調整 */
+  }
+
+  /* ランチメニューのサブテキスト */
+  #lunch-services p {
+    opacity: 1; /* 初めから表示 */
+    font-size: 1.1rem; /* 少し大きめの文字サイズ */
+    margin-top: 10px; /* 上の余白調整 */
+  }
+
+  /* ディナーメニューの背景画像設定 */
+  #dinner-services .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;  /* 横幅100% */
+    height: auto; /* 高さは自動調整 */
+    background-color: rgba(255, 255, 255, 0.8); /* 白いもや（透明度） */
+    backdrop-filter: blur(10px); /* 背景にぼかし効果 */
+    object-fit: cover; /* 背景画像が親要素にフィット */
+    clip-path: inset(0 5vh 1vh 0); /* 画像のカット調整 */
+    transform: scale(1.3); /* 1.3倍に拡大 */
+    transform-origin: center center; /* 拡大の中心を中央に */
+    overflow: hidden; /* はみ出した部分を非表示にする */
+    animation: fadeInBackgroundDinner 1s ease-out forwards; /* アニメーション変更 */
+  }
+
+  /* ディナーメニューの背景画像アニメーション（フェードイン） */
+  @keyframes fadeInBackgroundDinner {
+    0% {
+      opacity: 0; /* 初めは透明 */
+      transform: scale(1.3); /* 拡大した状態 */
+    }
+    100% {
+      opacity: 1; /* 完全に表示 */
+      transform: scale(1); /* 元のサイズに戻る */
+    }
+  }
+
+  /* ディナーメニューの文字コンテンツ設定 */
+  #dinner-services .container {
+    position: relative; /* 絶対位置を相対位置に変更 */
+    top: auto;
+    left: 0;
+    z-index: 2;
+    color: black;
+    padding: 20px;
+    text-align: left; /* 左寄せ */
+    font-size: 1.2rem; /* 少し大きめの文字サイズ */
+    max-width: 100%; /* 横幅を100%に */
+    transform: none;  /* スライドインなし */
+    opacity: 1; /* 最初から表示 */
+  }
+
+  /* ディナーメニューのヘッダータイトル */
+  #dinner-services h1 {
+    opacity: 1; /* 初めから表示 */
+    font-size: 1.8rem; /* フォントサイズを固定 */
+    margin-top: 20px; /* 上の余白調整 */
+  }
+
+  /* ディナーメニューのサブテキスト */
+  #dinner-services p {
+    opacity: 1; /* 初めから表示 */
+    font-size: 1.1rem; /* 少し大きめの文字サイズ */
+    margin-top: 10px; /* 上の余白調整 */
+  }
+}
