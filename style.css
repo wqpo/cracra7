@@ -1268,9 +1268,12 @@ button:hover {
   #kisetu p {
     opacity: 1; /* 初めから表示 */
     font-size: 1.1rem; /* 少し大きめの文字サイズ */
-    margin-top: 10px; /* 上の余白調整 */
+    margin-top: 30px; /* 上の余白調整 */
+    color: black; /* テキストカラーを黒に */
+    text-align: left; /* 左揃え */
+    transform: translateX(50px); /* pタグ全体を右に50px移動 */
   }
-
+  
   /* 画像とテキストが重ならないように調整 */
   #kisetu .image-wrapper img {
     width: 100%; /* 画像を画面いっぱいに */
