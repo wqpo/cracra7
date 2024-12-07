@@ -37,7 +37,7 @@
   #kisetu h1 {
     opacity: 1; /* 初めから表示 */
     font-size: 1.8rem; /* フォントサイズを固定 */
-    margin-top: 20px; /* 上の余白調整 */
+    margin-top: 50px; /* 上の余白調整 */
   }
 
   /* 季節メニューのサブテキスト */
@@ -45,6 +45,8 @@
     opacity: 1; /* 初めから表示 */
     font-size: 1.1rem; /* 少し大きめの文字サイズ */
     margin-top: 10px; /* 上の余白調整 */
+     margin-left: 60px; /* 左に60pxの余白 */
+    text-align: left; /* 左寄せ */
   }
 
   /* 画像とテキストが重ならないように調整 */
