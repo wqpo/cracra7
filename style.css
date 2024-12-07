@@ -47,6 +47,7 @@
     margin-top: 10px; /* 上の余白調整 */
      margin-left: 60px; /* 左に60pxの余白 */
     text-align: left; /* 左寄せ */
+    font-size: 11px; /* フォントサイズを11pxに変更 */
   }
 
   /* 画像とテキストが重ならないように調整 */
