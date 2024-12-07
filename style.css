@@ -1377,5 +1377,7 @@ button:hover {
     opacity: 1; /* 初めから表示 */
     font-size: 1.1rem; /* 少し大きめの文字サイズ */
     margin-top: 10px; /* 上の余白調整 */
+    text-align: left;  /* 左揃え */
+  margin-left: 5px;   /* 左に5pxの余白 */
   }
 }
