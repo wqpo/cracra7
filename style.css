@@ -1398,10 +1398,10 @@ button:hover {
     opacity: 1; /* 初めから表示 */
     font-size: 1.1rem; /* 少し大きめの文字サイズ */
     margin-top: 11px; /* 上の余白調整 */
-    text-align: center; /* 中央寄せ */
+    text-align: left; /* 中央寄せ */
     display: block; /* 明示的にブロック要素に指定 */
-    margin-right: 1px;
-    margin-left: -3px; /* 左に2px移動 */
+   
+    margin-left: 2px; /* 左に2px移動 */
   }
 
 
