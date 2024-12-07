@@ -1390,7 +1390,7 @@ button:hover {
   font-size: 1.8rem; /* フォントサイズを固定 */
   margin-top: 20px; /* 上の余白調整 */
   margin-left: 5px; /* 左寄せ、5pxの余白 */
-  text-align: left; /* 左寄せ */
+  text-align: center; /* 左寄せ */
 }
 
 /* ランチメニューのサブテキスト */
@@ -1399,7 +1399,7 @@ button:hover {
   font-size: 1.1rem; /* 少し大きめの文字サイズ */
   margin-top: 11px; /* 上の余白調整 */
 
-  text-align: left; /* 左寄せ */
+  text-align: center; /* 左寄せ */
 }
 
 
