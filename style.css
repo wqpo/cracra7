@@ -1381,17 +1381,23 @@ button:hover {
   }
 
   /* ランチメニューのヘッダータイトル */
-  #kisetu h1 {  /* 修正箇所: kisetu に変更 */
-    opacity: 1; /* 初めから表示 */
-    font-size: 1.8rem; /* フォントサイズを固定 */
-    margin-top: 20px; /* 上の余白調整 */
-  }
+  /* ランチメニューのヘッダータイトル */
+#kisetu h1 {
+  opacity: 1; /* 初めから表示 */
+  font-size: 1.8rem; /* フォントサイズを固定 */
+  margin-top: 20px; /* 上の余白調整 */
+  margin-left: 5px; /* 左寄せ、5pxの余白 */
+  text-align: left; /* 左寄せ */
+}
 
-  /* ランチメニューのサブテキスト */
-  #kisetu p {  /* 修正箇所: kisetu に変更 */
-    opacity: 1; /* 初めから表示 */
-    font-size: 1.1rem; /* 少し大きめの文字サイズ */
-    margin-top: 10px; /* 上の余白調整 */
-  }
- /* テキストを中央寄せ */
+/* ランチメニューのサブテキスト */
+#kisetu p {
+  opacity: 1; /* 初めから表示 */
+  font-size: 1.1rem; /* 少し大きめの文字サイズ */
+  margin-top: 10px; /* 上の余白調整 */
+  margin-left: 5px; /* 左寄せ、5pxの余白 */
+  text-align: left; /* 左寄せ */
+}
+
+
 }
