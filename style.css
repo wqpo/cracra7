@@ -1344,45 +1344,53 @@ button:hover {
 /* 季節のスマホ */
 /* スマホ表示用のスタイル */
 @media (max-width: 768px) {
-  /* 画像の設定 */
-  #kisetu .image-wrapper {
-      width: 100%; /* 画像の幅を100%に設定 */
-      margin-bottom: 0; /* 画像と余白の間にスペースは不要 */
-  }
-
-  #kisetu img {
-      width: 100%; /* 画像の幅を100%に */
-      height: auto; /* 高さを自動調整 */
-  }
-
-  /* 画像下の白い余白を100vhに設定 */
-  #kisetu {
-      padding-bottom: 100vh; /* 下に100vhの余白を追加 */
-      position: relative; /* 相対位置を設定 */
-  }
-
-  /* テキストコンテンツの設定 */
-  #kisetu .container {
-      text-align: center; /* テキストを中央寄せ */
-      padding: 15px; /* パディングの調整 */
-      position: absolute; /* 絶対位置にして動かす */
-      top: 50vh; /* 50vh下にテキストを配置 */
-      left: 50%; /* 水平中央に配置 */
-      transform: translateX(-50%); /* 左側に50%だけ移動して完全に中央寄せ */
-  }
-
-  /* サブテキストの設定 */
-  #kisetu p {
-      font-size: 1rem; /* フォントサイズを少し小さく調整 */
-  }
-
-  /* カラムの設定 */
-  #kisetu .row {
-      display: block; /* 横並びではなく縦並びに変更 */
-  }
-
-  #kisetu .col-md-6 {
-      width: 100%; /* カラム幅を100%に */
-      text-align: center; /* テキストを中央寄せ */
-  }
+    /* ランチメニューの背景画像設定 */
+    #kisetu-services .background-image {
+      position: absolute;
+      bottom: 0; /* 下端を合わせる */
+      left: 0; /* 左端を合わせる */
+      z-index: 1;
+      width: 100%;  /* 横幅100% */
+      height: auto; /* 高さは自動調整 */
+      background-color: rgba(255, 255, 255, 0.8); /* 白いもや（透明度） */
+      backdrop-filter: blur(10px); /* 背景にぼかし効果 */
+      object-fit: cover; /* 背景画像が親要素にフィット */
+      clip-path: inset(0 0 0 0); /* 画像の端をカットせずそのまま表示 */
+      transform: scale(1.3); /* 拡大率を適切に調整 */
+      transform-origin: center center; /* 拡大の中心を中央に */
+      overflow: hidden; /* はみ出した部分を非表示にする */
+      animation: none; /* アニメーションはなし */
+    }
+  
+    /* ランチメニューの文字コンテンツ設定 */
+    #kisetu-services .container {
+      position: relative; /* 絶対位置を相対位置に変更 */
+      bottom: auto; /* 写真の下に配置 */
+      right: auto; /* 右端の位置調整を解除 */
+      left: 0;
+      z-index: 2;
+      color: black;
+      padding: 20px;
+      text-align: left;  /* 左寄せ */
+      font-size: 1.2rem; /* 少し大きめの文字サイズ */
+      max-width: 100%; /* 横幅を100%に */
+      transform: none;  /* スライドインなし */
+      opacity: 1; /* 最初から表示 */
+    }
+  
+    /* ランチメニューのヘッダータイトル */
+    #kisetu-services h1 {
+      opacity: 1; /* 初めから表示 */
+      font-size: 1.8rem; /* フォントサイズを固定 */
+      margin-top: 20px; /* 上の余白調整 */
+    }
+  
+    /* ランチメニューのサブテキスト */
+    #kisetu p {
+      opacity: 1; /* 初めから表示 */
+      font-size: 1.1rem; /* 少し大きめの文字サイズ */
+      margin-top: 10px; /* 上の余白調整 */
+    }
+   /* テキストを中央寄せ */
+     
 }
