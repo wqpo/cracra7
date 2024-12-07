@@ -1341,11 +1341,13 @@ button:hover {
 
 /* 季節のスマホ */
 /* スマホ表示用のスタイル */
+/* 季節のスマホ */
+/* スマホ表示用のスタイル */
 @media (max-width: 768px) {
   /* 画像の設定 */
   #kisetu .image-wrapper {
       width: 100%; /* 画像の幅を100%に設定 */
-      margin-bottom: 20px; /* 画像とテキストの間にスペースを追加 */
+      margin-bottom: 0; /* 画像と余白の間にスペースは不要 */
   }
 
   #kisetu img {
@@ -1353,10 +1355,20 @@ button:hover {
       height: auto; /* 高さを自動調整 */
   }
 
+  /* 画像下の白い余白を100vhに設定 */
+  #kisetu {
+      padding-bottom: 100vh; /* 下に100vhの余白を追加 */
+      position: relative; /* 相対位置を設定 */
+  }
+
   /* テキストコンテンツの設定 */
   #kisetu .container {
       text-align: center; /* テキストを中央寄せ */
       padding: 15px; /* パディングの調整 */
+      position: absolute; /* 絶対位置にして動かす */
+      top: 50vh; /* 50vh下にテキストを配置 */
+      left: 50%; /* 水平中央に配置 */
+      transform: translateX(-50%); /* 左側に50%だけ移動して完全に中央寄せ */
   }
 
   /* サブテキストの設定 */
