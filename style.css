@@ -876,7 +876,9 @@ button:hover {
   animation: slideInBackgroundLunch 1.5s ease-out forwards;
 
   /* 上部22vhを削除するためのclip-path */
-  clip-path: inset(80vh 0 0 0);
+  clip-path: inset(60vh 0 0 0);
+  /* 左延長 */
+  width: calc(50% + 0vw);  /* 50% + 10vhを加算して左を延長 */
 }
 
 
@@ -921,13 +923,12 @@ button:hover {
     opacity: 1; /* 最後に完全に表示 */
   }
 }
-
 /* ランチメニューのヘッダータイトル */
 #lunch-services h1 {
   opacity: 0;
   animation: fadeInTitleLunch 2s ease-in-out forwards;
   font-size: clamp(1.5rem, 4vw, 3rem); /* 動的に変化する文字サイズ */
-  
+  transform: translateX(0vh); /* 文字を左に10vh移動 */
 }
 
 @keyframes fadeInTitleLunch {
@@ -946,6 +947,8 @@ button:hover {
   font-size: clamp(1rem, 2.5vw, 1.5rem); /* 動的に変化する文字サイズ */
   max-height: 100%;  /* 背景画像からはみ出さないように */
   overflow: hidden;  /* はみ出した部分は隠す */
+  transform: translateX(0vh); /* 文字を左に10vh移動 */
+  margin-top: 20px;
 }
 
 @keyframes fadeInTextLunch {
@@ -1221,17 +1224,133 @@ button:hover {
 
 /* 季節の料理 */
 /* 季節メニュー */
-/* スマホ向けに画像とテキストの配置を調整 */
-/* スマホ用設定 */
-/* 季節の料理 */
-/* 季節メニュー */
-/* スマホ向けに画像とテキストの配置を調整 */
+/* 季節メニューセクション */
+#kisetu {
+  position: relative;
+  background-color: white;
+  padding: 60px 0; /* 上下に60pxの余白 */
+  overflow: hidden;
+  min-height: 100vh; /* セクションの高さを最小100vh（画面全体の高さ）に設定 */
+}
 
-/* スマホ用設定 */
-@media screen and (max-width: 768px) {
+/* 季節メニューの背景画像設定 */
+#kisetu .background-image {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1;
+  width: 50%;
+  height: 60%;
+  background-color: rgba(255, 255, 255, 0.8); /* 白いもや（透明度を調整） */
+  backdrop-filter: blur(10px); /* 背景にぼかし効果 */
+  object-fit: cover;
+  
+  transform: translateX(100%);
+  animation: slideInBackgroundKisetu 1.5s ease-out forwards;
 
-  /* 季節メニューの背景画像設定 */
-  #kisetu .background-image {
+  /* 上部30vhを削除するためのclip-path */
+  clip-path: inset(50vh 0 0 0);
+}
+
+@keyframes slideInBackgroundKisetu {
+  0% {
+    transform: translateX(100%); /* 初期位置（画面外右） */
+  }
+  100% {
+    transform: translateX(0); /* スライドインして元の位置 */
+  }
+}
+
+#kisetu .background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+/* 季節メニューの文字コンテンツ設定 */
+#kisetu .container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+  color: black;
+  padding: 0;
+  text-align: right;
+  font-size: 2vw;
+  max-width: 50%;
+  transform: translateX(100%);  /* 初期状態: 画面外右 */
+  opacity: 0; /* 初期状態: 非表示 */
+  animation: slideInTextKisetu 1.5s ease-out 0.5s forwards; /* 季節メニューのテキストスライドイン */
+}
+
+@keyframes slideInTextKisetu {
+  0% {
+    transform: translateX(100%); /* 初期位置（画面外右） */
+    opacity: 0;  /* 初期状態で非表示 */
+  }
+  100% {
+    transform: translateX(0); /* 元の位置にスライドイン */
+    opacity: 1; /* 最後に完全に表示 */
+  }
+}
+
+/* 季節メニューのヘッダータイトル */
+#kisetu h1 {
+  opacity: 0;
+  animation: fadeInTitleKisetu 2s ease-in-out forwards;
+  font-size: clamp(1.5rem, 4vw, 3rem); /* 動的に変化する文字サイズ */
+}
+
+@keyframes fadeInTitleKisetu {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 季節メニューのサブテキスト */
+#kisetu p {
+  opacity: 0;
+  animation: fadeInTextKisetu 2s ease-in-out forwards;
+  font-size: clamp(1rem, 2.5vw, 1.5rem); /* 動的に変化する文字サイズ */
+  max-height: 100%;  /* 背景画像からはみ出さないように */
+  overflow: hidden;  /* はみ出した部分は隠す */
+  text-align: left;  /* 左揃え */
+  margin-left: 5px;   /* 左に5pxの余白 */
+  padding-left: 70px;  /* 文字全体を50px右に移動 */
+}
+
+@keyframes fadeInTextKisetu {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 季節メニュー詳細の調整 */
+#kisetu .row p {
+  font-size: 0.85rem;
+}
+
+.row .col-md-6 {
+  flex: 1 1 50%;
+}
+
+
+/* 季節のスマホ */
+/* スマホ表示用のスタイル */
+/* 季節のスマホ */
+/* スマホ表示用のスタイル */
+/* 季節のスマホ */
+/* スマホ表示用のスタイル */
+@media (max-width: 768px) {
+  /* ランチメニューの背景画像設定 */
+  #kisetu .background-image {  /* 修正箇所: kisetu に変更 */
     position: absolute;
     bottom: 0; /* 下端を合わせる */
     left: 0; /* 左端を合わせる */
@@ -1239,17 +1358,21 @@ button:hover {
     width: 100%;  /* 横幅100% */
     height: auto; /* 高さは自動調整 */
     background-color: rgba(255, 255, 255, 0.8); /* 白いもや（透明度） */
-    filter: blur(10px); /* ぼかし効果 */
+    backdrop-filter: blur(10px); /* 背景にぼかし効果 */
     object-fit: cover; /* 背景画像が親要素にフィット */
+    clip-path: inset(0 0 0 0); /* 画像の端をカットせずそのまま表示 */
     transform: scale(1.3); /* 拡大率を適切に調整 */
     transform-origin: center center; /* 拡大の中心を中央に */
     overflow: hidden; /* はみ出した部分を非表示にする */
     animation: none; /* アニメーションはなし */
   }
 
-  /* 季節メニューの文字コンテンツ設定 */
-  #kisetu .container {
+  /* ランチメニューの文字コンテンツ設定 */
+  #kisetu .container {  /* 修正箇所: kisetu に変更 */
     position: relative; /* 絶対位置を相対位置に変更 */
+    bottom: auto; /* 写真の下に配置 */
+    right: auto; /* 右端の位置調整を解除 */
+    left: 0;
     z-index: 2;
     color: black;
     padding: 20px;
@@ -1258,44 +1381,26 @@ button:hover {
     max-width: 100%; /* 横幅を100%に */
     transform: none;  /* スライドインなし */
     opacity: 1; /* 最初から表示 */
-    margin-top: 20px; /* テキストの上に余白を追加 */
   }
 
-  /* 季節メニューのヘッダータイトル */
-  #kisetu h1 {
-    opacity: 1; /* 初めから表示 */
-    font-size: 1.8rem; /* フォントサイズを固定 */
-    margin-top: 50px; /* 上の余白調整 */
-  }
+  /* ランチメニューのヘッダータイトル */
+  /* ランチメニューのヘッダータイトル */
+#kisetu h1 {
+  opacity: 1; /* 初めから表示 */
+  font-size: 1.8rem; /* フォントサイズを固定 */
+  margin-top: 20px; /* 上の余白調整 */
+  margin-left: 5px; /* 左寄せ、5pxの余白 */
+  text-align: left; /* 左寄せ */
+}
 
-  /* 季節メニューのサブテキスト */
-  #kisetu p {
-    opacity: 1; /* 初めから表示 */
-    font-size: 8px; /* フォントサイズを8pxに変更 */
-    margin-top: 0; /* 上の余白を削除 */
-    margin-bottom: 0; /* 下の余白を削除 */
-    color: black; /* テキストカラーを黒に */
-    text-align: left; /* 左揃え */
-    transform: translateX(50px); /* pタグ全体を右に50px移動 */
-  }
-  
-  
-  /* 画像とテキストが重ならないように調整 */
-  #kisetu .image-wrapper img {
-    width: 100%; /* 画像を画面いっぱいに */
-    height: auto; /* 高さは自動調整 */
-  }
+/* ランチメニューのサブテキスト */
+#kisetu p {
+  opacity: 1; /* 初めから表示 */
+  font-size: 1.1rem; /* 少し大きめの文字サイズ */
+  margin-top: 10px; /* 上の余白調整 */
+  margin-left: 5px; /* 左寄せ、5pxの余白 */
+  text-align: left; /* 左寄せ */
+}
 
-  /* 画像と文字の間に余白を追加 */
-  #kisetu .container {
-    padding-top: 20px; /* 画像とテキストの間に余白 */
-  }
 
-  /* 季節メニューセクションの幅調整（モバイル用） */
-  #kisetu {
-    margin-left: 0; /* 左右の余白を削除 */
-    margin-right: 0;
-    padding-left: 10px; /* 少し余白を加える */
-    padding-right: 10px; 
-  }
 }
