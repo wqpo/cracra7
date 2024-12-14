@@ -1,12 +1,30 @@
 document.addEventListener("DOMContentLoaded", function() {
     const slides = document.querySelectorAll('.blog-slide');  // 変更：'hero-slide' → 'blog-slide'
-    const dots = document.querySelectorAll('.blog-dot');      // 変更：'hero-dot' → 'blog-dot'
+    const dotsContainer = document.querySelector('.blog-dots-container');  // ドットのコンテナ
     const prevButton = document.querySelector('.blog-prev');  // 変更：'hero-prev' → 'blog-prev'
     const nextButton = document.querySelector('.blog-next');  // 変更：'hero-next' → 'blog-next'
     let currentIndex = 0;
     const totalSlides = slides.length;
 
+    // ドットの生成
+    function createDots() {
+        // 現在のドットをクリア
+        dotsContainer.innerHTML = '';
+        // 新しいドットを生成
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('blog-dot');
+            dot.addEventListener('click', function() {
+                showSlide(i);
+                currentIndex = i;
+            });
+            dotsContainer.appendChild(dot);
+        }
+    }
+
     // 初期設定：最初のスライドとドットをアクティブにする
+    createDots();  // ドットを動的に生成
+    const dots = document.querySelectorAll('.blog-dot');  // ドットの再取得
     slides[currentIndex].classList.add('active');
     dots[currentIndex].classList.add('active');
 
@@ -29,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 slide.style.opacity = 0;  // すべての他のスライドは透明に
             }
         });
-        
+
         // スライドの動きにアニメーションを追加
         const slideWidth = slides[0].offsetWidth;  // 各スライドの幅を取得
         document.querySelector('.blog-slider').style.transition = 'transform 0.5s ease-in-out';  // スライダー全体にアニメーションを追加
@@ -58,14 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
         prevSlide();
     });
 
-    // ドットをクリックしてスライドを移動
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', function() {
-            showSlide(index);
-            currentIndex = index;
-        });
-    });
-
     // 自動スライド：4秒ごとに次のスライドへ
     setInterval(nextSlide, 4000);
+
 });
